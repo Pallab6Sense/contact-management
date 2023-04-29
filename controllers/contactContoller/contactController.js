@@ -2,7 +2,12 @@
 //! @route POST api/contacts
 //! @access public
 const createContact = (req, res) => {
-  res.status(201).json({ message: "create contact" });
+  const { name, email, phone } = req.body;
+  if (!name || !email || !phone) {
+    res.status(400);
+    throw new Error("all fields are mandatory!");
+  }
+  res.status(201).json({ message: "create contact",data:req.body });
 };
 
 //! @desc Get all contacts
