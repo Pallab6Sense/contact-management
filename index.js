@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 connectDb()
 const port = process.env.PORT;
-app.use(express.json())
+app.use(express.json()) 
 app.use(errorHandler)
 app.use("/api/contacts",contactRouter) 
 app.listen(port, () => {
