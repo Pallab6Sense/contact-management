@@ -4,10 +4,11 @@ const {
   loginUser,
   getCurrentUserInformation,
 } = require("../../controllers/userController/userController");
+const validateToken = require("../../middleware/tokenHandler/validateTokenHandler");
 const router = express.Router();
 
 router.post("/register", registerUser);
 router.post("/login", loginUser);
-router.get("/current", getCurrentUserInformation);
+router.get("/current", validateToken, getCurrentUserInformation);
 
 module.exports = router;
